@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shrey11_</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+      </style>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Open Sans', sans-serif;
+            overflow: hidden;
+
+            font-size: 50px;
+        }
+        .con_main_butoon {
+            width: 700px;
+            height: 400px;
+            /* background: black; */
+        }
+        .button_con{
+            height: 100%;
+            width: 100%;
+            background: black;
+            border-radius: 20%/50%;
+            display: flex;justify-content: center;align-items: center;
+            font-size: 7rem;
+            color: white;
+            cursor: pointer;
+
+            overflow: hidden;
+            position: relative;
+        }
+
+        .show_first_text{
+            /* display: none; */
+            position: absolute;
+            background: #000;
+        }
+      
+        .con_truck_and_box{
+            height: 95%;
+            width: 95%;
+            /* background: red; */
+            border-radius: 20%/50%;
+
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            position: relative;
+        }
+        .show_road_line{
+            position: absolute;
+            top: 50%;
+            /* transform: translateX(-50%);             */
+            width: 900px;
+            /* background: red; */
+            border: 1px dashed black;
+            border: 7px dashed white;
+            z-index: 0;
+            transform: translateX(90%);
+        }
+
+        .con_truck_and_box .delivery_box{
+            background: linear-gradient(0deg, rgb(241, 196, 93) 43%, rgba(248,231,180,1) 90%);
+            height: 70px;
+            width: 70px;
+            border-radius: 10px;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform:translateY(-50%) translateX(-450px);
+            z-index: 1;
+            /* display: none; */
+        }
+        .delivery_box::after{
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 10px;
+            background: #c59433a0;
+        }
+        .show_box_message{
+            font-size: 20px;
+            position: absolute;
+            top:-40px;
+            left: 50%;            
+            transform: translate(-50%,0%);
+            /* height: 10px; */
+            width: max-content;
+            padding: 3px;
+            border-radius: 10px;
+            /* background: red; */
+            background: #3cd72a;
+
+            display: none;
+        }
+        .show_box_message::after{
+            content: '';
+            position: absolute;
+            bottom: -13px;
+            left: 50%;            
+            transform: translate(-50%,0%);
+            clip-path: polygon(90% 0, 10% 0, 49% 100%);
+            
+            height: 13px;
+            width: 13px;
+            background: #3cd72a;
+        }
+
+
+        .truck_box_con{
+            height: 100px;
+            width: 150px;
+            background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform:translateY(-50%) translateX(240%);
+        }
+        .truck_box_con::after{
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            right: -6px;
+            height: 55px;
+            width: 6px;
+            background: #074473;
+        }
+        .truck_door_1{
+            position: absolute;
+            left: -42px;
+            bottom: 0;
+            background: white;
+            height: 5px;
+            width: 50px;
+
+            transform-origin:right;
+            transform: rotate(90deg);
+          
+        }
+        .truck_door_2{
+            position: absolute;
+            left: -42px;
+            top: 0;
+            background: white;
+            height: 5px;
+            width: 50px;
+
+            transform-origin:right;
+            transform: rotate(-90deg);
+            
+        }
+        .truck_top_side{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            right: -55px;
+            height: 90%;
+            width: 50px;
+            border-radius: 0px 15px 15px 0px;
+            background: #1070b9;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .truck_mirr{
+            height: 60px;
+            width: 25px;
+            background: black;
+            border-radius: 0px 50px 50px 0px;
+            position: relative;
+            overflow: hidden;
+        }
+        .truck_mirr::after{
+            content: '';
+            position: absolute;
+            top: 10px;
+            right:-2px;
+
+            height: 7px;
+            width: 30px;
+            transform: rotate(30deg);
+            background: rgb(207, 206, 206);
+            
+        }
+        .truck_mirr::before{
+            content: '';
+            position: absolute;
+            top: 22px;
+            right:-2px;
+
+            height: 7px;
+            width: 30px;
+            transform: rotate(30deg);
+            background: rgba(207, 206, 206, 0.904);
+            
+        }
+
+        .light_of_1{
+            position: absolute;
+            top: 15px;
+            right: 0;
+
+            height: 25px;
+            width: 4px;
+            background: yellow;
+            border-radius: 5px;
+        }
+        .light_of_2{
+            position: absolute;
+            bottom: 15px;
+            right: 0;
+
+            height: 25px;
+            width: 4px;
+            background: yellow;
+            border-radius: 5px;
+        }
+
+        .show_last_text{
+            /* display: none; */
+            width: 100%;
+            position: absolute;
+            background: #000;
+            margin-bottom: -80%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+            font-size: 95px;
+        }
+    </style>
+</head>
+
+<body>
+    Click me to 
+<div class="con_main_butoon">
+    <div class="button_con" onclick="run_html_animation()">
+        <div class="show_first_text" id="hide_text_first">
+            Ship Order
+        </div>
+        <div class="show_road_line" id="show_road_line"></div>
+        <div class="con_truck_and_box">
+            
+            <div class="delivery_box" id="delivery_box">
+                <div class="show_box_message" id="show_box_message">
+                    You'r Order
+                </div>
+            </div>
+
+            <div class="truck_box_con" id="truck_box_con">
+                <!-- truck top side -->
+                <div class="truck_top_side">
+                    <div class="truck_mirr"> </div>
+                    <div class="light_of_1"></div>
+                    <div class="light_of_2"></div>
+                </div>
+
+                <!-- truck back side -->
+                <div class="truck_door_1" id="truck_door_1"></div>
+                <div class="truck_door_2" id="truck_door_2"></div>
+            </div>
+        </div>
+
+        <div class="show_last_text" id="hide_text_last">
+            Order Place
+        </div>
+    </div>
+</div>
+
+<script>
+function run_html_animation(){
+    
+    let hide_text_first = document.getElementById("hide_text_first");
+    let delivery_box_1 = document.getElementById("truck_door_1");
+    let delivery_box_2 = document.getElementById("truck_door_2");
+    let delivery_box = document.getElementById("delivery_box");
+    let show_road_line = document.getElementById("show_road_line");
+    let truck_box_con = document.getElementById("truck_box_con");
+    let hide_text_last = document.getElementById("hide_text_last");
+    let show_box_message = document.getElementById("show_box_message");
+
+
+// remove first text
+setTimeout(function(){
+        hide_text_first.style.transition = "1s";
+        hide_text_first.style.marginTop = "-80%";
+    },100);
+
+    // get box in side a button
+setTimeout(function(){
+        delivery_box.style.transition = "1.5s";
+        delivery_box.style.transform = "translateY(-50%) translateX(-300%)";
+    },550);
+
+// get truck in side a button
+setTimeout(function(){
+        truck_box_con.style.transition = "2s";
+        truck_box_con.style.transform = "translateX(-50%) translateY(-50%)";
+    },550);
+
+
+// open a door - 1
+setTimeout(function(){
+        delivery_box_1.style.transition = "0.7s";
+        delivery_box_1.style.transform = "rotate(0deg)";
+    },2000);
+    
+// open a door - 2
+setTimeout(function(){
+       delivery_box_2.style.transition = "0.7s";
+       delivery_box_2.style.transform = "rotate(0deg)";
+   },2500);
+
+
+// get box in side a button
+setTimeout(function(){
+        delivery_box.style.transition = "1s";
+        delivery_box.style.transform = "translateY(-50%) translateX(-50%)";
+    },3000);
+
+    setTimeout(function(){
+        delivery_box.style.display = "none";
+    },3650);
+    setTimeout(function(){
+        show_box_message.style.display = "block";
+    },2000);
+
+
+// close a door - 1
+setTimeout(function(){
+        delivery_box_1.style.transition = "0.7s";
+        delivery_box_1.style.transform = "rotate(90deg)";
+    },4000);
+// close a door - 2
+setTimeout(function(){
+       delivery_box_2.style.transition = "0.7s";
+       delivery_box_2.style.transform = "rotate(-90deg)";
+   },4000);
+// run road line
+   setTimeout(function(){
+        show_road_line.style.transition = "3s";
+        show_road_line.style.transform = "translateX(10%)";
+    },5000);
+// run truck
+    setTimeout(function(){
+        truck_box_con.style.transition = "3s";
+        truck_box_con.style.transform = "translateX(300%) translateY(-50%)";
+    },6500);
+
+
+setTimeout(function(){
+    hide_text_last.style.transition = "1s";
+    hide_text_last.style.marginBottom = "0%";
+},9000);
+
+// re set CSS
+    function resetStyles() {
+      delivery_box_1.style.transform = "";
+      hide_text_first.style.marginTop = "";
+
+      delivery_box_2.style.transform = "";
+
+      delivery_box.style.transform = "";
+      delivery_box.style.display = "";
+
+      show_road_line.style.transition = "";
+      show_road_line.style.transform = "";
+
+      truck_box_con.style.transform = "";
+
+      hide_text_last.style.marginBottom = "-80%";
+      show_box_message.style.display = "none";
+    }
+setTimeout(function () {
+    resetStyles(); 
+}, 11000); 
+
+}
+
+</script>
+
+
+</body>
+</html>
+
+<!--end of code @shrey11_ -->
+<!--end of code @shrey11_ -->
+<!--end of code @shrey11_ -->
