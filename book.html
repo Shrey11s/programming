@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: black;
+        background: rgb(173, 173, 173);
+        background: rgb(57, 62, 70);
+    }
+ 
+    .section_book{
+        height: 100vh;
+        width: 90%;
+        max-width: 650px;
+        min-width: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background: rgba(0, 255, 123, 0.393); */
+        flex-direction: column;
+        overflow: hidden;
+        font-size: clamp(1rem, 10vw, 3rem); 
+        color: white;
+        /* border: 0.1px solid white; */
+    }
+    .book{
+        width: 80%;
+        height: 60%;
+        position: relative;
+        perspective:98vh;
+        display: flex;
+        align-items: center;
+        border: 1px solid black;
+        border-radius: 20px;
+
+       margin-top: 10px;
+        
+    }
+    .book::before{
+        content: '';
+        position: absolute;
+        background: #292929fa;
+        width: 50%;
+        height: 100%;
+        transform-origin: center right;
+        transform: rotateY(180deg);
+        transition: 0.7s ease-in-out;
+
+        border-bottom-left-radius: 20px;
+        border-top-left-radius: 20px;
+        
+    }
+    .book:hover:before{
+        transition: 1;
+        transform: rotateY(0deg);
+        border-bottom-left-radius: 20px;
+        border-top-left-radius: 20px;
+    }
+    .pag1{
+        background:#fc8b00;
+        height: 100%;
+        width: 50%;
+        display: grid;
+        place-items: center;
+        font-size: clamp(1rem, 5vw, 20rem); 
+        border-bottom-left-radius: 20px;
+        border-top-left-radius: 20px;
+
+        color: white;
+    }
+    .pag2{
+        background: #00d9ff;
+        height: 100%;
+        width: 50%;
+        display: grid;
+        place-items: center;
+        font-size: clamp(1rem, 5vw, 20rem); 
+        border-bottom-right-radius: 20px;
+        border-top-right-radius: 20px;
+
+        color: white;
+    }
+</style>
+
+<body>
+<div class="section_book">
+    Hover To Flip Page
+    <div class="book">
+        <div class="pag1">
+            HTML
+        </div>
+        <div class="pag2">
+            CSS
+        </div>
+    </div>
+</div>
+</body>
+</html>

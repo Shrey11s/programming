@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+</head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            overflow: hidden;
+            height: 100vh;
+            display: flex;justify-content: center;align-items: center;
+            background: black;
+            background-image: url(img/wall3.jpg);
+            
+        }
+.clock_con{
+
+    height: 60vw; 
+    width: 60vw; 
+    max-width: 600px;
+    max-height: 600px;
+    
+    /* background: rgba(225, 26, 26, 0.297); */
+    display: flex;justify-content: center;align-items: center;
+/* 
+    position: fixed;
+    top: 2.5%;
+    left: 2.5%; */
+    
+}
+/* @media only screen and (max-width: 650px){
+ .clock_con{
+    height: 75vw; 
+    width: 75vw; 
+ }    
+} */
+.clock_outer_round{
+    height: 90%;
+    width: 90%;
+    /* background: rgb(255, 255, 255); */
+    border-radius: 50%;
+    display: flex;justify-content: center;align-items: center;   
+    position: relative;
+
+    border: 1px solid rgb(255, 255, 255);
+    backdrop-filter: blur(4px);
+    
+    box-shadow: inset 0 0 8px #ffffff,rgba(36, 113, 255, 0.799)10px 26px 50px -10px;
+    
+}
+
+.clock_outer_round label{
+    position: absolute;
+    inset: 0.1vw;
+    text-align: center;
+    transform: rotate(calc(var(--i)* (360deg / 12)));
+}
+.clock_outer_round label span{
+    font-size: 4vw;    
+    color: white;
+    display: inline-block;
+    /* transform: rotate(calc(var(--i)* (-360deg / 12))); */
+}
+.clock_outer_round label span span{
+    font-size: calc(38px + 0.390625vw);
+    color: white;
+    display: inline-block;
+    transform: rotate(calc(var(--i)* (-360deg / 12)));
+}
+.clock_con .clock_outer_round .clock_center_round{
+    background: rgb(255, 255, 255);
+    height: 3vw; 
+    width: 3vw; 
+    max-width: 40px;
+    max-height: 40px;
+
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.clock_second{
+    position: absolute;
+    height: 36%;
+    width: fit-content;
+    /* background: rgb(255, 0, 0); */
+    border-radius: 10px;
+    top: 15%;
+    transform-origin: bottom center;
+    /* transform: rotate(0deg); */
+
+    /* transition: 3s; */
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: visible;
+    
+}
+.blue_se{
+    background: #2441ff;
+    height: 3vw; 
+    width: 3vw; 
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 50%;
+    z-index: 1;
+    /* border: 1px solid white; */
+    box-shadow: inset 0 0 4px #efefef;
+}
+.clock_hours{
+    position: absolute;
+    height: 30%;
+    width: 3%;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    top: 19.5%;
+    transform-origin: bottom center;
+    /* transform: rotate(0deg); */
+}
+.clock_hours::after{
+    content: '';
+    background: rgb(255, 255, 255);
+    height: 30%;
+    width: 100%;
+    position: absolute;
+    bottom: -20%;
+    border-radius: 10px;
+}
+
+.clock_minutes{
+    position: absolute;
+    height: 40%;
+    width: 3%;
+    background: rgb(133, 133, 133);
+    border-radius: 10px;
+    top: 10%;
+    transform-origin: bottom center;
+    /* transform: rotate(50deg); */
+}
+.clock_minutes::after{
+    content: '';
+    background: rgb(133, 133, 133);
+    height: 30%;
+    width: 100%;
+    position: absolute;
+    bottom: -20%;
+    border-radius: 10px;
+    /* z-index: 2; */
+}
+
+</style>
+ 
+<body>
+    <div class="clock_con">
+    <div class="clock_outer_round">
+            <label style="--i:1"><span >|</span></label>
+            <label style="--i:2"><span >|</span></label>
+            <label style="--i:3">
+                <span >
+                    <span>3</span>
+                </span>
+            </label>
+            <label style="--i:4"><span >|</span></label>
+            <label style="--i:5"><span >|</span></label>
+            <label style="--i:6">
+                <span >
+                    <span>6</span>
+                </span>
+            </label>
+            <label style="--i:7"><span >|</span></label>
+            <label style="--i:8"><span >|</span></label>
+            <label style="--i:9">
+                <span >
+                    <span>9</span>
+                </span>
+            </label>
+            <label style="--i:10"><span >|</span></label>
+            <label style="--i:11"><span >|</span></label>
+            <label style="--i:12">
+                <span >
+                    <span>12</span>
+                </span>
+            </label>
+            <div class="clock_center_round"></div>
+
+            <div class="clock_second" id="second"><div class="blue_se"></div></div>
+            <div class="clock_hours" id="hours"></div>
+            <div class="clock_minutes" id="minutes"></div>
+    </div>
+    </div> 
+</body>
+
+<script>
+setInterval(() =>{
+    d =new Date();
+    htime = d.getHours();
+    mtime = d.getMinutes();
+    stime = d.getSeconds();
+
+    h_rot = 30*htime + mtime/2;
+    m_rot = 6*mtime;
+    s_rot = 6*stime;
+
+    
+    hours.style.transform = `rotate(${h_rot}deg)`
+    minutes.style.transform = `rotate(${m_rot}deg)`
+    second.style.transform = `rotate(${s_rot}deg)`
+    // console.log(htime+":"+mtime+":"+stime+":")
+},1000)
+</script>
+
+
+</html>

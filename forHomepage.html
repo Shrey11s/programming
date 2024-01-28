@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        height: 100vh;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+.all_html_con{
+    height: 98vh;
+    width: 98vw;
+    background: rgba(0, 0, 0, 0.549);
+    border-radius: 30px;
+    border: 4px solid rgb(255, 255, 255);
+    outline: 4px solid rgb(0, 0, 0);
+
+    display: flex;    
+    justify-content: space-evenly;
+    align-items: center;
+}
+.left_side_con{
+    height: 95vh;
+    width: 180px;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding-top: 10px;
+
+    display: grid;
+    place-items: center;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    gap: 10px;
+
+    overflow-y: scroll;
+}
+.left_side_con::-webkit-scrollbar{
+    background: red;
+    width: 0px;
+}
+.right_side_con{
+    height: 95vh;
+    width: calc(100% - 220px);
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+.select_html_box{
+    height: 180px;
+    width: 90%;
+    background: red;
+    border-radius: 18px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.set_iframe_for_html{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+</style>
+<body>
+<div class="all_html_con">
+    <div class="left_side_con" id="leftSideContainer">
+        <div class="select_html_box" onclick="updateIframeSource('book.html')">HTML 1</div>
+        <div class="select_html_box" onclick="updateIframeSource('anime.html')">HTML 2</div>
+        <div class="select_html_box" onclick="updateIframeSource('document.html')">HTML 3</div>
+        <div class="select_html_box" onclick="updateIframeSource('tutorial.html')">HTML 4</div>
+        <div class="select_html_box" onclick="updateIframeSource('example.html')">HTML 5</div>
+    </div>
+    <div class="right_side_con">
+        <iframe src="book.html" class="set_iframe_for_html" id="set_iframe_for_html" frameborder="0"></iframe>
+     
+    </div>
+
+</div>
+</body>
+<script>
+    // Function to update the iframe source
+    function updateIframeSource(src) {
+        var iframeSet = document.getElementById("set_iframe_for_html");
+        iframeSet.src = src;
+    }
+    </script>
+</html>

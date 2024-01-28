@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background: black;
+        display: flex;
+        justify-content: center;
+    }
+    .section_light{
+        height: 90vh;
+        width: 200px;
+        display: flex;
+        align-items: center;
+        color: white;
+        flex-direction: column;
+
+        /* background: red; */
+    }
+    .light_lamp_row{
+        height: 35%;
+        width: 1.5%;
+        background: white;
+    }
+    .light_lamp_round{
+        background: #5c5c5c;
+        height:10%;
+        /* chang-1 */
+        width: 55%;
+        border-radius: 10rem 10rem 0 0;
+        position: relative;
+        border-bottom-left-radius: 80%;
+        border-bottom-right-radius: 80%;
+
+        
+    }
+    .light_lamp_round::before{
+        content: '';
+        height: 100%;
+        width: 100%;
+        background: radial-gradient(circle, rgba(241,237,233,1) 26%, rgba(179,172,169,1) 71%);
+        position: absolute;
+        border-radius: 10rem 10rem 0 0;
+        transform: translateY(-10%);
+        border-bottom-left-radius: 20%;
+        border-bottom-right-radius: 20%;
+
+        z-index: 1;
+    }
+
+    .light_lamp_round::after{
+        content: '';
+        position: absolute; 
+        height: 50%;
+        width: 50%;
+        background: radial-gradient(circle, rgba(241,237,233,1) 26%, rgba(179,172,169,1) 71%);
+        border-radius: 10rem 10rem 0 0;
+        right: 50%;
+        left: 50%;
+        transform: translate(-50%,-60%);
+    }
+    .light_lamp_light{
+        border-bottom: 40vh solid #656565;
+	    border-left: 25px solid transparent;
+	    border-right: 25px solid transparent;
+	    height: 0;
+        /* chang-2 */
+	    width: 75%;
+        margin-top: -3%;
+
+        transition: 0.7s;
+        border-bottom: 10vh solid transparent;
+    
+        /* background: yellow; */
+    }
+/* 
+    .light_lamp_light:hover{
+        border-bottom: 40vh solid #ffffff2d;
+        box-shadow: rgba(255, 255, 255, 0.56) 0px 22px 70px 4px;
+        
+        
+    }
+     */
+    .text_light {
+    position: absolute;
+    top: 50%;
+    font-size: clamp(1rem, 3vw, 20rem); 
+    color: white; /* Set default text color */
+    cursor: pointer;
+}
+
+.light_shado{
+    
+    height:40vh;
+    width: 0px;
+    position: absolute;
+    top: 40%;
+    /* background: red; */
+    
+}
+
+.section_light input[type="checkbox"] {
+    display: none;
+}
+
+
+#light_:checked ~ .light_lamp_light {
+    border-bottom: 40vh solid #ffffff13;
+}
+#light_:checked ~ .light_shado {
+    /* border-bottom: 40vh solid #ffffff2d; */
+        box-shadow: rgba(255, 255, 255, 0.56) 0px 50px 700px 50px;
+        animation: light_auto 5s infinite;
+}
+
+
+@keyframes light_auto{
+    0%{box-shadow: rgba(255, 255, 255, 0.56) 0px 50px 700px 80px;}
+    50%{box-shadow: rgba(255, 255, 255, 0.56) 0px 50px 700px 110px;}
+    100%{box-shadow: rgba(255, 255, 255, 0.56) 0px 50px 700px 80px;}
+}
+
+#light_:checked ~ .light_lamp_round{
+    background: #eee6cb;
+}
+
+</style>
+<body>
+    
+    <section class="section_light">
+        <div class="light_lamp_row"></div>
+
+        <input type="checkbox" id="light_">
+        <div class="light_lamp_round"></div>
+
+       
+        <div class="light_shado"></div>
+        <div class="light_lamp_light"></div>
+        <label for="light_" class="text_light">On/OFF</label>
+    </section>
+    
+</body>
+</html>
